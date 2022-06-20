@@ -1,0 +1,8 @@
+@import "../utils/mixins.scss";
+.login-content {
+  height: 70%;
+  width: 40%;
+  background-color: white;
+  border-radius: 20px;
+  @include flex-center($justify-content: false);
+}

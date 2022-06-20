@@ -1,0 +1,21 @@
+@mixin image {
+  user-select: none;
+  -webkit-user-drag: none;
+  &:hover {
+    cursor: pointer;
+  }
+}
+@mixin flex-center(
+  $flex-direction: column,
+  $justify-content: true,
+  $align-items: true
+) {
+  display: flex;
+  flex-direction: $flex-direction;
+  @if ($justify-content) {
+    justify-content: center;
+  }
+  @if ($align-items) {
+    align-items: center;
+  }
+}
