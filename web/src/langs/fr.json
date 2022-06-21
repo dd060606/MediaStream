@@ -38,7 +38,8 @@
     "account-confirmation": "Confirmation de votre compte",
     "account-successfully-activated": "Votre compte a été activé avec succès !",
     "confirm-email-to-continue": "Pour continuer, vous devez confirmer votre compte avec l'e-mail qui vous a été envoyé.",
-    "login-another-account": "Se connecter avec un autre compte"
+    "login-another-account": "Se connecter avec un autre compte",
+    "stay-logged-in": "Rester connecté"
   },
   "account": {
     "my-account": "Mon compte",

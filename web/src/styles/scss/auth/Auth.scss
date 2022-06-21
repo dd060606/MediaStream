@@ -14,5 +14,26 @@
     font-weight: bold;
     margin-top: 10px;
     color: #252627;
+    margin-bottom: 50px;
+  }
+  .content {
+    height: 70%;
+    width: 40%;
+    background-color: white;
+    border-radius: 20px;
+    @include flex-center($justify-content: false);
+  }
+}
+.link {
+  outline: none;
+  background-color: transparent;
+  border: none;
+  color: #252627;
+  font-size: 16px;
+  margin-top: 30px;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline #252627;
+    cursor: pointer;
   }
 }

@@ -1,8 +1,12 @@
-@import "../utils/mixins.scss";
-.login-content {
-  height: 70%;
-  width: 40%;
-  background-color: white;
-  border-radius: 20px;
-  @include flex-center($justify-content: false);
+.field {
+  width: 70%;
+  margin-bottom: 30px;
+  height: 50px;
+}
+.text-field {
+  width: 100%;
+  height: 100%;
+}
+.stay-logged-in {
+  color: #252627;
 }
