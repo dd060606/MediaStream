@@ -9,7 +9,7 @@
     "invalid-email": "Please enter a valid email!",
     "invalid-lastname": "Please enter a valid lastname!",
     "invalid-firstname": "Please enter a valid firstname!",
-    "password-require": "The password requires at least one number, one uppercase letter, one lowercase letter and 8 characters!",
+    "password-require": "The password requires at least 8 characters!",
     "available-password-chars": "Available special characters : ",
     "password-confirmation-not-match": "Password confirmation doesn't match!",
     "new-password-confirmation-not-match": "New password confirmation doesn't match!",

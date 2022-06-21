@@ -9,6 +9,10 @@ import { withTranslation, WithTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { PasswordField, EmailField } from "../../components/Fields";
 
+import { EMAIL_REGEX, PASSWORD_REGEX } from "../../utils/constants";
+
+import Swal from "sweetalert2";
+
 type State = {
   password: string;
   email: string;
@@ -31,6 +35,34 @@ class Login extends Component<WithTranslation, State> {
     email: "",
     password: "",
   };
+
+  //Arrow fx for binding
+  handleLogin = () => {
+    const { email, password } = this.state;
+    const { t } = this.props;
+
+    if (!email || !password) {
+      this.openErrorAlert(t("errors.complete-all-fields"));
+    } else if (!EMAIL_REGEX.test(email)) {
+      this.openErrorAlert(t("errors.invalid-email"));
+    } else if (!PASSWORD_REGEX.test(password)) {
+      this.openErrorAlert(t("errors.password-require"));
+    }
+  };
+
+  openErrorAlert(
+    message: string,
+    title: string = this.props.t("errors.error")
+  ) {
+    Swal.fire({
+      icon: "error",
+      title: title,
+      text: message,
+      background: "#252627",
+      color: "white",
+      confirmButtonColor: "#30c6ff",
+    });
+  }
   render() {
     const { t } = this.props;
     const { email, password } = this.state;
@@ -65,7 +97,9 @@ class Login extends Component<WithTranslation, State> {
             label={t("auth.stay-logged-in")}
             className="stay-logged-in"
           />
-          <LoginButton variant="contained">{t("auth.login")}</LoginButton>
+          <LoginButton onClick={this.handleLogin} variant="contained">
+            {t("auth.login")}
+          </LoginButton>
           <Link className="link" to="/register">
             {t("auth.no-account")}
           </Link>

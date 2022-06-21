@@ -9,6 +9,10 @@ import { PasswordField, EmailField } from "../../components/Fields";
 import { withTranslation, WithTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
+import { EMAIL_REGEX, PASSWORD_REGEX } from "../../utils/constants";
+
+import Swal from "sweetalert2";
+
 type State = {
   password: string;
   email: string;
@@ -33,6 +37,35 @@ class Register extends Component<WithTranslation, State> {
     password: "",
     confirmPassword: "",
   };
+
+  handleRegister = () => {
+    const { email, password, confirmPassword } = this.state;
+    const { t } = this.props;
+
+    if (!email || !password || !confirmPassword) {
+      this.openErrorAlert(t("errors.complete-all-fields"));
+    } else if (!EMAIL_REGEX.test(email)) {
+      this.openErrorAlert(t("errors.invalid-email"));
+    } else if (!PASSWORD_REGEX.test(password)) {
+      this.openErrorAlert(t("errors.password-require"));
+    } else if (password !== confirmPassword) {
+      this.openErrorAlert(t("errors.password-confirmation-not-match"));
+    }
+  };
+
+  openErrorAlert(
+    message: string,
+    title: string = this.props.t("errors.error")
+  ) {
+    Swal.fire({
+      icon: "error",
+      title: title,
+      text: message,
+      background: "#252627",
+      color: "white",
+      confirmButtonColor: "#30c6ff",
+    });
+  }
   render() {
     const { t } = this.props;
     const { email, password, confirmPassword } = this.state;
@@ -58,7 +91,9 @@ class Register extends Component<WithTranslation, State> {
             label={t("auth.confirm-password")}
           />
 
-          <LoginButton variant="contained">{t("auth.signup")}</LoginButton>
+          <LoginButton variant="contained" onClick={this.handleRegister}>
+            {t("auth.signup")}
+          </LoginButton>
           <Link className="link" to="/login">
             {t("auth.already-have-account")}
           </Link>

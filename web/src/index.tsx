@@ -14,6 +14,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
+    <link rel="stylesheet" href="@sweetalert2/themes/dark/dark.css" />
+    <script src="sweetalert2/dist/sweetalert2.min.js"></script>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
